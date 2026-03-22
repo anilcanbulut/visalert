@@ -4,6 +4,7 @@
 # Directories
 __pycache__/
 .vscode/
+.github/
 
 # Files
 *.log
