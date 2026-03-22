@@ -1,0 +1,11 @@
+# Extensions
+*.pyc
+
+# Directories
+__pycache__/
+.vscode/
+
+# Files
+*.log
+secrets.yaml
+session.session
