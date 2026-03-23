@@ -1,0 +1,13 @@
+analyzer: "deepseek , deepseek-chat"
+models:
+  deepseek:
+    deepseek-reasoner:
+      model_name: "deepseek-reasoner"      
+      temperature: 0.0
+      max_tokens: 8000
+      base_url: "https://api.deepseek.com/v1/chat/completions"
+    deepseek-chat:
+      model_name: "deepseek-chat"      
+      temperature: 0.0
+      max_tokens: 2000
+      base_url: "https://api.deepseek.com/v1/chat/completions"

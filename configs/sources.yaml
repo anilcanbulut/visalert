@@ -1,0 +1,7 @@
+sources:
+  telegram:
+    enable: true
+    info:
+      last_n_messages: 100
+      channels:
+        - visa_randevu

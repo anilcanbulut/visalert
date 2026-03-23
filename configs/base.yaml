@@ -1,0 +1,1 @@
+run_period: 600   # Time in seconds between each run of the main loop
