@@ -17,7 +17,6 @@ class ConfigReader:
         self._configs['sources'] = self._load_sources_config()
         self._configs['secrets'] = self._load_secrets_config()
         self._configs['llm'] = self._load_llm_config()
-        self._configs['countries'] = self._load_countries_config()
         self._configs['base'] = self._load_base_config()
 
     def get_configs(self):
@@ -56,15 +55,6 @@ class ConfigReader:
         llm_template.models = llm_config.get("models", {})
 
         return llm_template
-
-    def _load_countries_config(self):
-        logger.info("Loading countries configuration...")
-        countries_template = Countries()
-        countries_config = self._read_config("countries.yaml")
-
-        countries_template.country_list = countries_config.get("countries", [])
-
-        return countries_template
 
     def _load_base_config(self):
         logger.info("Loading base configuration...")

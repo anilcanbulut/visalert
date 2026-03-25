@@ -4,7 +4,7 @@ import time
 from config.config_reader import ConfigReader
 from data.data_collector_factory import DataCollectorFactory
 from analyzer.analyzer_model_factory import AnalyzerModelFactory
-from notifier.telegram_notifier import TelegramNotifier
+from notifier.ntfy_notifier import NtfyNotifier
 from logger import logger
 from utils import process_messages, format_alerts
 
@@ -16,7 +16,7 @@ class Main:
         self._configs = ConfigReader().get_configs()
         self._data_collectors = DataCollectorFactory.create_data_collector(self._configs)
         self._analyzer = AnalyzerModelFactory.create_analyzer_model(self._configs)
-        self._notifier = TelegramNotifier(self._configs)
+        self._notifier = NtfyNotifier(self._configs)
 
     def start(self):
         logger.info("Starting the application...")
@@ -35,8 +35,18 @@ class Main:
             messages = data_collector.collect_data()
             all_messages.extend(messages)
 
+        logger.debug(f"Collected {len(all_messages)} messages in total.")
+
         processed_messages = process_messages(all_messages)
         analysis_result = self._analyzer.analyze(processed_messages)
+
+        # logger.debug(f"\nFetched messages:")
+        # for msg in processed_messages:
+        #     logger.debug(f"- {msg}")
+
+        if not analysis_result or analysis_result.strip().upper() == "NO":
+            logger.info("No alerts found in this run.")
+            return
 
         try:
             alerts = json.loads(analysis_result).get("alerts", [])

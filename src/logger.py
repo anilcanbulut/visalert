@@ -39,7 +39,7 @@ class Logger:
         os.makedirs(logs_dir, exist_ok=True)
         
         # Create logger
-        self._logger = logging.getLogger("crypto-agent")
+        self._logger = logging.getLogger("visalert")
         self._logger.setLevel(logging.DEBUG)
         
         # Prevent duplicate handlers if logger is already configured
@@ -57,7 +57,7 @@ class Logger:
         )
         
         # File handler with rotation (10MB max, keep 5 backup files)
-        log_file = os.path.join(logs_dir, 'crypto-agent.log')
+        log_file = os.path.join(logs_dir, 'visalert.log')
         file_handler = RotatingFileHandler(
             log_file,
             maxBytes=10 * 1024 * 1024,  # 10MB
