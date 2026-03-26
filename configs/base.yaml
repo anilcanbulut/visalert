@@ -1,2 +1,3 @@
 run_period: 600   # Time in seconds between each run of the main loop
 ntfy_topic: "visalert-357c4151802cb826"
+telegram_notification_channel: "@visalertt"

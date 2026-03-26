@@ -1,7 +1,6 @@
 sources:
   telegram:
     enable: true
-    session_name: "session_windows"
     info:
       last_n_messages: 50
       channels:

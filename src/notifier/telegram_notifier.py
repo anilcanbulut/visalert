@@ -9,7 +9,7 @@ class TelegramNotifier:
 
     def notify(self, message: str):
         bot_token = self._config.get('secrets', {}).get('telegram', {}).get('bot_api')
-        channel = self._config.get('secrets', {}).get('telegram', {}).get('notify_channel', '@visalertt')
+        channel = self._config.get('base', {}).get('telegram_notification_channel', '@visalertt')
 
         url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
         response = requests.post(url, json={

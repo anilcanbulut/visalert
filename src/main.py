@@ -4,7 +4,7 @@ import time
 from config.config_reader import ConfigReader
 from data.data_collector_factory import DataCollectorFactory
 from analyzer.analyzer_model_factory import AnalyzerModelFactory
-from notifier.ntfy_notifier import NtfyNotifier
+from notifier.telegram_notifier import TelegramNotifier
 from logger import logger
 from utils import process_messages, format_alerts
 
@@ -16,7 +16,7 @@ class Main:
         self._configs = ConfigReader().get_configs()
         self._data_collectors = DataCollectorFactory.create_data_collector(self._configs)
         self._analyzer = AnalyzerModelFactory.create_analyzer_model(self._configs)
-        self._notifier = NtfyNotifier(self._configs)
+        self._notifier = TelegramNotifier(self._configs)
 
     def start(self):
         logger.info("Starting the application...")
